@@ -1,25 +1,25 @@
 require_relative 'card'
 
 class Deck
-  SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades'].freeze
-  VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'].freeze
-
   attr_reader :cards
 
   def initialize
-    @cards = []
-    SUITS.each do |suit|
-      VALUES.each do |value|
-        @cards << Card.new(suit, value)
-      end
-    end
+    @cards = generate_deck
   end
 
   def shuffle
     @cards.shuffle!
   end
 
-  def deal(num)
-    @cards.shift(num)
+  def deal(num_cards)
+    @cards.shift(num_cards)
+  end
+
+  private
+
+  def generate_deck
+    suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+    suits.product(ranks).map { |suit, rank| Card.new(suit, rank) }
   end
 end
