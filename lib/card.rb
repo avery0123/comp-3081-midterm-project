@@ -1,16 +1,12 @@
 class Card
-  attr_reader :suit, :value
+  attr_reader :suit, :rank
 
-  def initialize(suit, value)
+  def initialize(suit, rank)
     @suit = suit
-    @value = value
+    @rank = rank
   end
 
   def ==(other)
-    suit == other.suit && value == other.value
-  end
-
-  def to_s
-    "#{value} of #{suit}"
+    @suit == other.suit && @rank == other.rank
   end
 end
