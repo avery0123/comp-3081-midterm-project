@@ -5,23 +5,26 @@ class Player
 
   def initialize(hand)
     @hand = hand
-    @pot = 1000 # Starting pot amount
+    @pot = 1000
   end
 
   def discard(indices)
-    # Add logic to discard cards from the hand
-    # Indices parameter represents the positions of cards to discard
+
+    indices.each { |index| @hand.cards.delete_at(index) }
   end
 
   def fold
-    # Add logic to fold the hand
+
+    @hand = nil
   end
 
   def see(bet)
-    # Add logic to see the current bet
+
+    @pot -= bet
   end
 
   def raise_bet(amount)
-    # Add logic to raise the bet
+
+    @pot -= amount
   end
 end
